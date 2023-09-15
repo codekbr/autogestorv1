@@ -45,4 +45,21 @@ class Permission extends Model
     }
 
 
+    public function permissionsAvaiables(Permission $permission)
+    {
+        $permissõesCadastradas = $permission::pluck('name')->toArray();
+        // Array de todas as permissões disponíveis
+        $permissoesDisponiveis = [
+            'aba-produtos' => 'Permissão Aba Produtos',
+            'aba-marcas' => 'Permissão Aba Marcas',
+            'aba-categorias' => 'Permissão Aba Categorias',
+        ];
+
+        // Filtrar as permissões disponíveis para exibir apenas aquelas que ainda não estão cadastradas
+        $permissoesNaoCadastradas = array_diff_key($permissoesDisponiveis, array_flip($permissõesCadastradas));
+
+        return $permissoesNaoCadastradas;
+    }
+
+
 }
