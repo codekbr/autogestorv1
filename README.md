@@ -19,13 +19,13 @@ Trata-se de uma aplicação de administração que permite atribuir permissões 
 <br />
 Este projeto inclui recursos como  <br />
     Administrador pode: <br />
-              - Adicionar ou remover permissões de um usuário específico. <br />
-              - Administrador não precisa ter permissões. <br />
-              - Administrador pode cadastrar se elas já não estiverem sido cadastradas na tabela de permissões. (aba-produto, aba-marcas, aba-categorias), podendo rodar também o comando no terminal  -  php artisan db:seed --class=PermissionsPadrao
+        &nbsp;&nbsp;&nbsp;      - Adicionar ou remover permissões de um usuário específico. <br />
+            &nbsp;&nbsp;&nbsp;  - Administrador não precisa ter permissões. <br />
+             &nbsp;&nbsp;&nbsp; - Administrador pode cadastrar se elas já não estiverem sido cadastradas na tabela de permissões. (aba-produto, aba-marcas, aba-categorias), podendo rodar também o comando no terminal  -  php artisan db:seed --class=PermissionsPadrao
    <br />
     Usuário pode: <br />
-              - Vizualizar o Dashboard por padrão. <br />
-              - Vizualizar as abas que o adminstrador lhe atribuiu; <br />
+             &nbsp;&nbsp;&nbsp; - Vizualizar o Dashboard por padrão. <br />
+              &nbsp;&nbsp;&nbsp;- Vizualizar as abas que o adminstrador lhe atribuiu; <br />
 
 ## Requisitos de Sistema
 
