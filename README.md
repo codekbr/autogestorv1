@@ -17,14 +17,14 @@ Auto Gestor - Permissões de Usuário
 O projeto AutoGestor foi criado como parte de um processo seletivo na Autogestor. Trata-se de uma aplicação de administração que permite atribuir permissões a usuários para a execução de ações específicas.
 
 Este projeto inclui recursos como 
-    Administrador pode:
-      - Adicionar ou remover permissões de um usuário específico.
-      - Administrador não precisa ter permissões.
+    Administrador pode <br />
+      - Adicionar ou remover permissões de um usuário específico. <br />
+      - Administrador não precisa ter permissões. <br />
       - Administrador pode cadastrar se elas já não estiverem sido cadastradas na tabela de permissões. (aba-produto, aba-marcas, aba-categorias), podendo rodar também o comando no terminal  -  php artisan db:seed --class=PermissionsPadrao
-
-    Usuário pode:
-      - Vizualizar o Dashboard por padrão.
-      - Vizualizar as abas que o adminstrador lhe atribuiu;
+   <br />
+    Usuário pode: <br />
+      - Vizualizar o Dashboard por padrão. <br />
+      - Vizualizar as abas que o adminstrador lhe atribuiu; <br />
 
 ## Requisitos de Sistema
 
