@@ -14,7 +14,7 @@
                         class="text-white bg-gradient-to-r from-green-500 via-green-600 to-green-700
                                 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300
                                 font-medium rounded-md text-sm px-8 py-2.5 text-center mr-2 mb-2">Permissões
-                        Usuário
+
                     </a>
                 </div>
             </div>

@@ -1,66 +1,106 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Nome do Projeto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Auto Gestor - Permissões de Usuário
 
-## About Laravel
+## Índice
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- [Visão Geral](#visão-geral)
+- [Requisitos de Sistema](#requisitos-de-sistema)
+- [Instalação](#instalação)
+- [Uso](#uso)
+- [Recursos](#recursos)
+- [Testes](#testes)
+- [Contato](#contato)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Visão Geral
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+O projeto AutoGestor foi criado como parte de um processo seletivo na Autogestor. Trata-se de uma aplicação de administração que permite atribuir permissões a usuários para a execução de ações específicas.
 
-## Learning Laravel
+Este projeto inclui recursos como 
+    Administrador pode:
+      - Adicionar ou remover permissões de um usuário específico.
+      - Administrador não precisa ter permissões.
+      - Administrador pode cadastrar se elas já não estiverem sido cadastradas na tabela de permissões. (aba-produto, aba-marcas, aba-categorias), podendo rodar também o comando no terminal  -  php artisan db:seed --class=PermissionsPadrao
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+    Usuário pode:
+      - Vizualizar o Dashboard por padrão.
+      - Vizualizar as abas que o adminstrador lhe atribuiu;
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Requisitos de Sistema
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Para rodar o Projeto, é necessário atender aos seguintes requisitos de sistema:
 
-## Laravel Sponsors
+    - PHP 8.0^  
+    - Banco de dados MySQL
+    - Composer 
+    - Node (npm)
+    
+Certifique-se de que seu ambiente de desenvolvimento atenda a esses requisitos antes de prosseguir com a instalação.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Instalação
 
-### Premium Partners
+    Para instalar e configurar o Projeto, siga estas etapas simples:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+    1º Clone o repositório: Use o Git para clonar o repositório em seu ambiente de desenvolvimento local.
+        - git clone https://github.com/codekbr/autogestorv1.git
 
-## Contributing
+    2º Acesse o diretório: Navegue até o diretório do projeto recém-clonado.
+        - cd nome-do-projeto
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+    3º Instale as dependências: Use o Composer para instalar as dependências do projeto.
+        - composer install
 
-## Code of Conduct
+    4º Configure o arquivo .env: Faça uma cópia do arquivo .env.example e renomeie-o para .env. Em seguida, configure as informações do banco de dados e outras variáveis de ambiente conforme necessário.
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+    5º Gere a chave de aplicativo: Execute o seguinte comando para gerar uma chave de aplicativo única.
+       - php artisan key:generate
 
-## Security Vulnerabilities
+    6º Execute as migrações: Crie as tabelas do banco de dados executando as migrações.
+       - php artisan migrate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    7º Execute o Seeder para criar registros na tabela de Permissões ( serão permissões padrão que foi configurada no back-end ) não foi incluído um crud de  cadastro para permissões.
+       - php artisan db:seed --class=PermissionsPadraoSeeder
 
-## License
+    8º Inicie o servidor de desenvolvimento: Você pode iniciar um servidor de desenvolvimento local com o seguinte comando:
+       - php artisan serve
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    9º  Inicie o vite para compilar os arquivos do front-end:
+       - npm run dev
+
+    A aplicação agora deve estar em execução em http://localhost:8000. Você pode acessá-la em seu navegador.
+
+## Uso
+    Acessar a rota http://localhost:8000/register, existe um botão ao lado direto para o cadastro.
+
+    Obs: foi configurado internamente no back-end um observador que lhe dará permissão de administrador ao fazer o cadastro, porém o usuário para administrador
+    previamente configurado precisa ter o seguinte email: admin@autogestor.com.br
+
+
+    Após realizar o cadastro como Administrador você verá um botão com para gerenciar as permissões no canto superior direto de nome "Admin Área".
+    Ao clicar cairá em uma tela para ver os usuários do sistema, nessa tabela você terá um botão para atribuir permissões para o usuário, mas antes disso,
+    se você não executou o comando,  php artisan db:seed --class=PermissionsPadraoSeeder, você pode cadastrar as 3 opções de (marcas, produtos e categorias),
+    clicando no botão verde ( Permissões ), lá você terá uma lista de todas as permissões que estão cadastradas internamente, se ainda não houver nenhuma, você
+    verá um select para informar qual deseja incluir para poder vincular ao usuário.
+
+
+## Recursos
+
+    - Adicionar Permissões ao Usuário.
+    - Cadastrar Permissões que está internamente em um Array fixo no back - end.
+    - Remover uma Permissão
+
+## Testes
+
+    Você pode criar um usuário comum que será diferente o email para administrador ( admin@autogestor.com.br ) exemplo: ( comum@autogestor.com.br ).
+
+    Você pode incluir uma permissão com a conta de administrador para um usuário comum, e testar as abas que eles possuí acesso, se for permitido, o usuário comum
+    conseguirá vizualizar a aba e acessa-la, caso contrário não.
+
+    Você pode remover a permissão do usuário clicando no botão input radio, revogando a permissão a determinada ação, e verificar com o usuário comum se ele não consegue vizualizar a aba que você removeu das permissões.
+## Contato
+
+Email: verycode@verycode.com.br
+Email secundário: marcosit.developer@gmal.com
+
+
+
