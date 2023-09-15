@@ -27,7 +27,9 @@ class Role extends Model
 
      public static function existsOnCache(string $roles): bool
     {
-        return self::getAllFromCache()->where('name', $roles)->isNotEmpty();
+
+        $r = self::getAllFromCache()->where('name', $roles)->isNotEmpty();
+        return $r;
     }
 
      public static function getAllFromCache(): Collection
@@ -36,6 +38,7 @@ class Role extends Model
         $roles = Cache::rememberForever('roles', function( ) {
             return  self::all();
         });
+
 
 
         return $roles;

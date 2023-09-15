@@ -53,22 +53,42 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class);
     }
 
+    public function permissions() :BelongsToMany
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+
     public function giveRoleTo(string $role): void
     {
-        $p = Role::query()->firstOrCreate([
-            'name'=> $role
-        ]);
-
+        /** @var Role  $p */
+        $r = Role::getRole($role);
         $this->roles()->attach($p);
         Cache::forget('roles::of::user'. $this->id);
     }
 
-     public function removeRoleTo(string $permission)
+    public function givePermissionTo(string $permission): void
+    {
+        /** @var Permission  $p */
+        $p = Permission::getPermission($permission);
+        $this->permissions()->attach($p);
+        Cache::forget('permissions::of::user'. $this->id);
+
+    }
+
+     public function removeRoleTo(string $role)
     {
         /** @var Role  $r */
-        $r = Role::getPermission($permission);
+        $r = Role::getRole($role);
         $this->roles()->detach($r);
         Cache::forget('roles::of::user'. $this->id);
+    }
+
+     public function removePermissionTo(string $permission)
+    {
+        /** @var Permission  $p */
+        $p = Permission::getPermission($permission);
+        $this->permissions()->detach($p);
+        Cache::forget('permissions::of::user'. $this->id);
     }
 
     public function hasRoleTo(string $role): bool
@@ -84,6 +104,23 @@ class User extends Authenticatable
 
 
         $r  =  $rolesOfUser->where('name', $role)->isNotEmpty();
+
+        return  $r;
+    }
+
+    public function hasPermissionTo(string $permission): bool
+    {
+        /** @var Collection $permissionsOfUser */
+
+        $permissionsOfUser =  Cache::rememberForever('permissions::of::user'. $this->id, function() {
+
+            return $this->permissions()->get();
+        });
+
+
+
+
+        $r  =  $permissionsOfUser->where('name', $permission)->isNotEmpty();
 
         return  $r;
     }

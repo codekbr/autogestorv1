@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DashboardController extends Controller
+class MarcaController extends Controller
 {
 
     public function __construct() {
-        // $this->middleware('role:comum');
+        $this->middleware('permission:marcas');
     }
-
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard');
+        return view('marcas.index');
     }
 
     /**
