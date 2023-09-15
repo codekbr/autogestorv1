@@ -14,9 +14,10 @@ Auto Gestor - Permissões de Usuário
 
 ## Visão Geral
 
-O projeto AutoGestor foi criado como parte de um processo seletivo na Autogestor. Trata-se de uma aplicação de administração que permite atribuir permissões a usuários para a execução de ações específicas.
-
-Este projeto inclui recursos como 
+O projeto AutoGestor foi criado como parte de um processo seletivo na Autogestor.<br />
+Trata-se de uma aplicação de administração que permite atribuir permissões a usuários para a execução de ações específicas.
+<br />
+Este projeto inclui recursos como  <br />
     Administrador pode <br />
       - Adicionar ou remover permissões de um usuário específico. <br />
       - Administrador não precisa ter permissões. <br />
