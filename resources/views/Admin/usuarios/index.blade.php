@@ -62,17 +62,32 @@
                                         {{ \Carbon\Carbon::parse($user->updated_at)->format('m/d/Y H:i:s') }}
                                     </td>
                                     <td class="px-6 py-4 text-center">
-                                        <button type="button" onclick="abreModal('{{ $user }}', this)"
-                                            data-userPermissions="{{ $user->permissions }}"
-                                            class="
+
+                                        @if ($user->roles->first() && $user->roles->first()->name === 'comum')
+                                            <button type="button" onclick="abreModal('{{ $user }}', this)"
+                                                data-userPermissions="{{ $user->permissions }}"
+                                                class="
                                             open-btn
                                             text-white
                                             bg-gradient-to-r
                                             from-indigo-500 via-indigo-600 to-indigo-700 hover:bg-gradient-to-br
                                             focus:ring-4 focus:outline-none focus:ring-indigo-300
                                             font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
-                                            Editar Permissões
-                                        </button>
+                                                Editar Permissões
+                                            </button>
+                                        @else
+                                            <button type="button" disabled
+                                                class="
+                                                disabled:opacity-30
+                                            open-btn
+                                            text-white
+                                            bg-gradient-to-r
+                                            from-orange-500 via-orange-600 to-orange-700 hover:bg-gradient-to-br
+                                            focus:ring-4 focus:outline-none focus:ring-orange-300
+                                            font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">
+                                                Todas Permissões
+                                            </button>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach
