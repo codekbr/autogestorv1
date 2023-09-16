@@ -12,7 +12,7 @@ class RegisterUserObserver
      */
     public function created(User $user): void
     {
-        $tipo = $user->email === 'msandro39@gmail.com' ? 'admin' : 'comum';
+        $tipo = $user->email === 'admin@autogestor.com.br' ? 'admin' : 'comum';
         $roleCreated = Role::where('name', "{$tipo}")
             ->exists();
 
