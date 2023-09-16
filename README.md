@@ -74,9 +74,9 @@ Certifique-se de que seu ambiente de desenvolvimento atenda a esses requisitos a
     Acessar a rota http://localhost:8000 você cairá na página de login onde existe um botão para você se registrar.
 
     Obs: foi configurado internamente no back-end um observador que lhe dará permissão de administrador ao fazer o cadastro, porém o usuário para administrador
-    previamente configurado precisa ter o seguinte <br /> 
-    <br />
-        Registre - se para administrador  com o email <br />
+    previamente configurado precisa ter o seguinte 
+   
+        Registre - se para administrador  com o email 
         email: admin@autogestor.com.br
 
 
