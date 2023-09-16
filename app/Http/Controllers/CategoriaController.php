@@ -8,7 +8,7 @@ class CategoriaController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('permission:categorias');
+        $this->middleware('permission:aba-categorias');
     }
     /**
      * Display a listing of the resource.

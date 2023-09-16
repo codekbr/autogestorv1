@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         // Caso queira adicionar permissões para tipos de usuário já ficará pré configurada...
-        Role::observe(RoleObserver::class);
+        // Role::observe(RoleObserver::class);
         Permission::observe(PermissionObserver::class);
         Gate::before(function (User $user, $ability) {
 
@@ -34,12 +34,11 @@ class AppServiceProvider extends ServiceProvider
             if ($user->roles->first()->name === 'admin') return true;
 
             if (Permission::existsOnCache($ability)) {
-
                 return $user->hasPermissionTo($ability);
             }
-            if (Role::existsOnCache($ability)) {
-                return $user->hasRoleTo($ability);
-            }
+            // if (Role::existsOnCache($ability)) {
+            //     return $user->hasRoleTo($ability);
+            // }
         });
     }
 }

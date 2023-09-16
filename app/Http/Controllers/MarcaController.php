@@ -8,7 +8,7 @@ class MarcaController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('permission:marcas');
+        $this->middleware('permission:aba-marcas');
     }
     /**
      * Display a listing of the resource.

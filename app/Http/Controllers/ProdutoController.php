@@ -8,7 +8,7 @@ class ProdutoController extends Controller
 {
 
     public function __construct() {
-        $this->middleware('permission:produtos');
+        $this->middleware('permission:aba-produtos');
     }
     public function index()
     {
