@@ -31,7 +31,7 @@ Este projeto inclui recursos como  <br />
 
 Para rodar o Projeto, é necessário atender aos seguintes requisitos de sistema:
 
-    - PHP 8.0^  
+    - PHP ^8.1 
     - Banco de dados MySQL
     - Composer 
     - Node (npm)
