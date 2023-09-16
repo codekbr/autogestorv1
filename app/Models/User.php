@@ -61,7 +61,7 @@ class User extends Authenticatable
     public function giveRoleTo(string $role): void
     {
         /** @var Role  $p */
-        $r = Role::getRole($role);
+        $p = Role::getRole($role);
         $this->roles()->attach($p);
         Cache::forget('roles::of::user'. $this->id);
     }
