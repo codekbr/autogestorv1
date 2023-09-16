@@ -58,5 +58,9 @@ class AdminController extends Controller
             return response()->json(['success' => 'Permissão revogada com sucesso.']);
         }
     }
-
+    public function deletePermissionUser($id)
+    {
+        Permission::find($id)->delete();
+        return redirect()->back()->with(['success' => 'Permissão deletada com sucesso.']);
+    }
 }

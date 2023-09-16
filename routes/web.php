@@ -38,6 +38,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/permissions', [AdminController::class, 'createPermissions'])->name('admin.createPermissions');
         Route::post('/permissions', [AdminController::class, 'storePermissions'])->name('admin.storePermissions');
         Route::put('/permissions/user/{id}', [AdminController::class, 'updatePermissionUser'])->name('admin.updatePermissionUser');
+        Route::delete('/permissions/{id}', [AdminController::class, 'deletePermissionUser'])->name('admin.deletePermissionUser');
     });
 
     Route::get('/produtos', [ProdutoController::class, 'index'])->name('produtos.index');

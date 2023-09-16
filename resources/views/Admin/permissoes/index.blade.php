@@ -62,50 +62,65 @@
                         </button>
                     </div>
                 @endif
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-2">
-                    <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-                        <table class="w-full text-sm text-left text-gray-500">
-                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 bg-gray-700 text-white ">
-                                <tr>
-                                    <th scope="col" class="px-6 py-3">
-                                        Nome da Permissão
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Descrição da Permissão
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Data Criação
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Data Atualização
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($allpermissoes as $permission)
-                                    <tr class="bg-white border-b">
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            {{ $permission->name }}
-                                        </th>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
-                                            {{ $permission->description ?? 'Nenhuma descrição atribuída' }}
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            {{ \Carbon\Carbon::parse($permission->created_at)->format('m/d/Y H:i:s') }}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {{ \Carbon\Carbon::parse($permission->updated_at)->format('m/d/Y H:i:s') }}
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
             </form>
+            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mt-2">
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                    <table class="w-full text-sm text-left text-gray-500">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-50 bg-gray-700 text-white ">
+                            <tr>
+                                <th scope="col" class="px-6 py-3">
+                                    Nome da Permissão
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Descrição da Permissão
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Data Criação
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Data Atualização
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    Ações
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($allpermissoes as $permission)
+                                <tr class="bg-white border-b">
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                        {{ $permission->name }}
+                                    </th>
+                                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap ">
+                                        {{ $permission->description ?? 'Nenhuma descrição atribuída' }}
+                                    </th>
+                                    <td class="px-6 py-4">
+                                        {{ \Carbon\Carbon::parse($permission->created_at)->format('m/d/Y H:i:s') }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        {{ \Carbon\Carbon::parse($permission->updated_at)->format('m/d/Y H:i:s') }}
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <form action="{{ route('admin.deletePermissionUser', $permission->id) }}"
+                                            method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit"
+                                                class="cursor-pointer text-white bg-gradient-to-r hover:text-white from-red-500 via-red-600 to-red-700
+                                                            hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300
+                                                            font-medium rounded-md text-sm px-8 py-2.5 text-center mr-2 mb-2">
+                                                Excluir
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
 
 
 

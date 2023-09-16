@@ -29,7 +29,8 @@ class PermissionObserver
      */
     public function deleted(Permission $permission): void
     {
-        //
+        Cache::forget('permissions');
+        Cache::rememberForever('permissions', fn () => Permission::all());
     }
 
     /**
