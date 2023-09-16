@@ -71,10 +71,13 @@ Certifique-se de que seu ambiente de desenvolvimento atenda a esses requisitos a
     A aplicação agora deve estar em execução em http://localhost:8000. Você pode acessá-la em seu navegador.
 
 ## Uso
-    Acessar a rota http://localhost:8000/register, existe um botão ao lado direto para o cadastro.
+    Acessar a rota http://localhost:8000 você cairá na página de login onde existe um botão para você se registrar.
 
     Obs: foi configurado internamente no back-end um observador que lhe dará permissão de administrador ao fazer o cadastro, porém o usuário para administrador
-    previamente configurado precisa ter o seguinte email: admin@autogestor.com.br
+    previamente configurado precisa ter o seguinte <br /> 
+    <br />
+        Registre - se para administrador  com o email <br />
+        email: admin@autogestor.com.br
 
 
     Após realizar o cadastro como Administrador você verá um botão com para gerenciar as permissões no canto superior direto de nome "Admin Área".
