@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Permission;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class PermissionObserver
@@ -29,8 +30,14 @@ class PermissionObserver
      */
     public function deleted(Permission $permission): void
     {
-        Cache::forget('permissions');
-        Cache::rememberForever('permissions', fn () => Permission::all());
+        // Definir uma nova coleção como valor padrão
+        $permissionsInCache = Cache::get('permissions', new Collection());
+        // Verificar se a permissão está no cache
+        $updatedPermissions = $permissionsInCache->filter(function ($cachedPermission) use ($permission) {
+            return $cachedPermission['name'] !== $permission && $cachedPermission['id'] !== $permission['id'];
+        });
+        // Atualizar o cache com as permissões restantes
+        Cache::forever('permissions', $updatedPermissions->values());
     }
 
     /**
