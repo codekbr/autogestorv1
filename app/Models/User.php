@@ -119,7 +119,7 @@ class User extends Authenticatable
         });
 
         $r  =  $permissionsOfUser
-            ->where('id', $this->permissions()->get()->pluck('id')->first())
+            ->whereIn('id', $this->permissions()->get()->pluck('id'))
             ->where('name', $permission)->isNotEmpty();
 
         return  $r;
