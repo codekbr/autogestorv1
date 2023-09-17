@@ -7,6 +7,7 @@ use App\Models\Role;
 use App\Models\User;
 use App\Observers\PermissionObserver;
 use App\Observers\RoleObserver;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,9 +31,7 @@ class AppServiceProvider extends ServiceProvider
         Permission::observe(PermissionObserver::class);
         Gate::before(function (User $user, $ability) {
 
-
             if ($user->roles->first()->name === 'admin') return true;
-
             if (Permission::existsOnCache($ability)) {
                 return $user->hasPermissionTo($ability);
             }

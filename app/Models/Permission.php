@@ -6,12 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Permission extends Model
 {
     use HasFactory;
     protected $guarded = [];
     protected $fillable = ['name', 'description'];
+
+
 
     public static function getPermission(string $permission) : Permission
     {

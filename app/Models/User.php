@@ -112,15 +112,15 @@ class User extends Authenticatable
     {
         /** @var Collection $permissionsOfUser */
 
+
         $permissionsOfUser =  Cache::rememberForever('permissions::of::user'. $this->id, function() {
 
             return $this->permissions()->get();
         });
 
-
-
-
-        $r  =  $permissionsOfUser->where('name', $permission)->isNotEmpty();
+        $r  =  $permissionsOfUser
+            ->where('id', $this->permissions()->get()->pluck('id')->first())
+            ->where('name', $permission)->isNotEmpty();
 
         return  $r;
     }
