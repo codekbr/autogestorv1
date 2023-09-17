@@ -59,7 +59,7 @@ Certifique-se de que seu ambiente de desenvolvimento atenda a esses requisitos a
     6º Execute as migrações: Crie as tabelas do banco de dados executando as migrações.
        - php artisan migrate
 
-    7º Execute o Seeder para criar registros na tabela de Permissões ( serão permissões padrão que foi configurada no back-end ) não foi incluído um crud de  cadastro para permissões.
+    7º Execute o Seeder para criar registros na tabela de Permissões ( serão permissões padrão que foi configurada no back-end ).
        - php artisan db:seed --class=PermissionsPadraoSeeder
 
     8º Inicie o servidor de desenvolvimento: Você pode iniciar um servidor de desenvolvimento local com o seguinte comando:
